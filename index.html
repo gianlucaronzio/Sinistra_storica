@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Sinistra storica (1876-1896)</title>
+<meta name="description" content="Grafico animato e interattivo sulla Sinistra storica: trasformismo, riforma elettorale, scuola e fisco, socialismo, protezionismo, Triplice alleanza e colonie.">
+<style>
+:root{
+  --bg:#f4f5f7;--card:#ffffff;--text:#1d2433;--muted:#5b6475;--line:#c9ced8;
+  --coral-f:#FAECE7;--coral-s:#993C1D;--coral-t:#712B13;--coral-u:#993C1D;
+  --purple-f:#EEEDFE;--purple-s:#534AB7;--purple-t:#3C3489;--purple-u:#534AB7;
+  --teal-f:#E1F5EE;--teal-s:#0F6E56;--teal-t:#085041;--teal-u:#0F6E56;
+  --gray-f:#F1EFE8;--gray-s:#5F5E5A;--gray-t:#444441;--gray-u:#5F5E5A;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#14171f;--card:#1c202b;--text:#e8eaf0;--muted:#a3abbb;--line:#3a4152;
+    --coral-f:#712B13;--coral-s:#F0997B;--coral-t:#F5C4B3;--coral-u:#F0997B;
+    --purple-f:#3C3489;--purple-s:#AFA9EC;--purple-t:#CECBF6;--purple-u:#AFA9EC;
+    --teal-f:#085041;--teal-s:#5DCAA5;--teal-t:#9FE1CB;--teal-u:#5DCAA5;
+    --gray-f:#444441;--gray-s:#B4B2A9;--gray-t:#D3D1C7;--gray-u:#B4B2A9;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.6}
+main{max-width:520px;margin:0 auto;padding:24px 16px 40px}
+h1{font-size:26px;font-weight:500;margin:0 0 4px;line-height:1.2}
+.sub{margin:0 0 16px;color:var(--muted);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.th{font-size:14px;font-weight:500}
+.ts{font-size:12px}
+.node{cursor:pointer;outline:none}
+.node:hover rect{opacity:.85}
+.node:focus-visible rect{stroke-width:3}
+.coral{--f:var(--coral-f);--s:var(--coral-s);--t:var(--coral-t);--u:var(--coral-u)}
+.purple{--f:var(--purple-f);--s:var(--purple-s);--t:var(--purple-t);--u:var(--purple-u)}
+.teal{--f:var(--teal-f);--s:var(--teal-s);--t:var(--teal-t);--u:var(--teal-u)}
+.gray{--f:var(--gray-f);--s:var(--gray-s);--t:var(--gray-t);--u:var(--gray-u)}
+.coral rect,.purple rect,.teal rect,.gray rect{fill:var(--f);stroke:var(--s);stroke-width:.5}
+.coral .th,.purple .th,.teal .th,.gray .th{fill:var(--t)}
+.coral .ts,.purple .ts,.teal .ts,.gray .ts{fill:var(--u)}
+.orbit{fill:none;stroke:var(--line);stroke-width:.5;stroke-dasharray:3 4}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.leg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted)}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+button{font:inherit;font-size:14px;color:var(--text);background:transparent;border:.5px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+button:hover{background:var(--card)}
+button:focus-visible{outline:2px solid #7F77DD;outline-offset:2px}
+#card{background:var(--card);border-radius:8px;padding:14px 16px;margin-top:12px;min-height:128px}
+#card h2{font-size:18px;font-weight:500;margin:0 0 2px}
+#card p{margin:0}
+#card .who{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13px;color:var(--muted);margin-bottom:6px}
+#card .txt{font-size:16px}
+#card .hint{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>La Sinistra storica</h1>
+<p class="sub">Dal 1876 al 1896, da Depretis a Crispi. Tocca un tema per leggerne il dettaglio.</p>
+
+<svg viewBox="0 0 380 340" role="img" aria-labelledby="t d">
+<title id="t">La Sinistra storica</title>
+<desc id="d">Sei temi orbitano attorno alla Sinistra storica: trasformismo, scuola e fisco, voto allargato, nascita del socialismo, dazi e protezionismo, Triplice alleanza e colonie.</desc>
+<circle id="ring" cx="190" cy="170" r="40" fill="none" stroke="#7F77DD" stroke-width="0.5"/>
+<ellipse class="orbit" cx="190" cy="170" rx="122" ry="128"/>
+<line id="l0" x1="190" y1="170" x2="190" y2="42" stroke="#7F77DD" stroke-width="0.5"/>
+<line id="l1" x1="190" y1="170" x2="190" y2="42" stroke="#D85A30" stroke-width="0.5"/>
+<line id="l2" x1="190" y1="170" x2="190" y2="42" stroke="#7F77DD" stroke-width="0.5"/>
+<line id="l3" x1="190" y1="170" x2="190" y2="42" stroke="#D85A30" stroke-width="0.5"/>
+<line id="l4" x1="190" y1="170" x2="190" y2="42" stroke="#1D9E75" stroke-width="0.5"/>
+<line id="l5" x1="190" y1="170" x2="190" y2="42" stroke="#7F77DD" stroke-width="0.5"/>
+<g class="gray">
+<rect x="132" y="146" width="116" height="48" rx="8"/>
+<text class="th" x="190" y="164" text-anchor="middle" dominant-baseline="central">Italia 1876</text>
+<text class="ts" x="190" y="182" text-anchor="middle" dominant-baseline="central">Sinistra storica</text>
+</g>
+<g class="node purple" id="n0" tabindex="0" role="button" aria-label="Trasformismo"><rect width="104" height="44" rx="8"/><text class="th" x="52" y="15" text-anchor="middle" dominant-baseline="central">Trasformismo</text><text class="ts" x="52" y="32" text-anchor="middle" dominant-baseline="central">Depretis</text></g>
+<g class="node coral" id="n1" tabindex="0" role="button" aria-label="Scuola e fisco"><rect width="104" height="44" rx="8"/><text class="th" x="52" y="15" text-anchor="middle" dominant-baseline="central">Scuola</text><text class="ts" x="52" y="32" text-anchor="middle" dominant-baseline="central">e fisco</text></g>
+<g class="node purple" id="n2" tabindex="0" role="button" aria-label="Voto allargato"><rect width="104" height="44" rx="8"/><text class="th" x="52" y="15" text-anchor="middle" dominant-baseline="central">Voto</text><text class="ts" x="52" y="32" text-anchor="middle" dominant-baseline="central">allargato</text></g>
+<g class="node coral" id="n3" tabindex="0" role="button" aria-label="Nascita del socialismo"><rect width="104" height="44" rx="8"/><text class="th" x="52" y="15" text-anchor="middle" dominant-baseline="central">Nascita del</text><text class="ts" x="52" y="32" text-anchor="middle" dominant-baseline="central">socialismo</text></g>
+<g class="node teal" id="n4" tabindex="0" role="button" aria-label="Dazi e protezionismo"><rect width="104" height="44" rx="8"/><text class="th" x="52" y="15" text-anchor="middle" dominant-baseline="central">Dazi</text><text class="ts" x="52" y="32" text-anchor="middle" dominant-baseline="central">e protezionismo</text></g>
+<g class="node purple" id="n5" tabindex="0" role="button" aria-label="Triplice alleanza e colonie"><rect width="104" height="44" rx="8"/><text class="th" x="52" y="15" text-anchor="middle" dominant-baseline="central">Triplice</text><text class="ts" x="52" y="32" text-anchor="middle" dominant-baseline="central">e colonie</text></g>
+</svg>
+
+<div class="bar">
+<div class="leg"><span><i style="background:#7F77DD"></i>politico</span><span><i style="background:#D85A30"></i>sociale</span><span><i style="background:#1D9E75"></i>economico</span></div>
+<button id="pp" type="button">Pausa</button>
+</div>
+
+<div id="card" aria-live="polite"><p class="hint">Tocca un tema per leggerne il dettaglio.</p></div>
+</main>
+
+<script>
+(function(){
+var D=[
+["Trasformismo","Agostino Depretis, discorso di Stradella (1882)","Il 18 marzo 1876 la caduta del governo Minghetti porta al potere la Sinistra, guidata da Depretis. Presto Depretis forma maggioranze variabili, accogliendo anche deputati della Destra: è il trasformismo, che sfuma la distinzione tra i partiti e favorisce clientelismo e corruzione."],
+["Scuola e fisco","Legge Coppino (1877), macinato abolito","La legge Coppino (1877) porta l'obbligo scolastico elementare fino ai 9 anni, con sanzioni per le famiglie inadempienti. La tassa sul macinato, simbolo della politica fiscale della Destra, è abolita gradualmente tra il 1880 e il 1884."],
+["Voto allargato","Riforma elettorale del 1882","La riforma abbassa l'età minima a 21 anni e il censo richiesto, e ammette chi sa leggere e scrivere. Gli elettori passano da circa il 2% a circa il 7% della popolazione. Si introduce lo scrutinio di lista, che sarà abolito nel 1891."],
+["Nascita del socialismo","Andrea Costa, Partito dei lavoratori (1892)","Cresce la questione sociale. Andrea Costa fonda in Romagna un partito socialista rivoluzionario (1881) e nel 1882 è il primo socialista eletto in Parlamento. Nel 1892, a Genova, nasce il Partito dei lavoratori italiani, che diventerà Partito socialista italiano."],
+["Dazi e protezionismo","Tariffa doganale del 1887","La crisi agraria degli anni Ottanta, aggravata dal grano straniero a basso prezzo, e l'esigenza di sostenere l'industria portano alla tariffa doganale del 1887, che protegge grano, acciaio e tessili. Ne segue una lunga guerra doganale con la Francia. Cresce l'emigrazione."],
+["Triplice e colonie","Triplice alleanza (1882), Dogali (1887)","Dopo lo schiaffo di Tunisi (1881), l'Italia entra nella Triplice alleanza con Germania e Austria-Ungheria (1882). Si avvia la politica coloniale in Africa: Assab, poi Massaua. Con Crispi si arriva alla guerra d'Africa, che si chiude con la sconfitta di Adua (1896)."]
+];
+var N=[],L=[];
+for(var i=0;i<6;i++){N.push(document.getElementById('n'+i));L.push(document.getElementById('l'+i));}
+var ring=document.getElementById('ring'),pp=document.getElementById('pp'),card=document.getElementById('card');
+var t=0,last=0,sel=-1,run=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function lay(ts){
+  for(var i=0;i<6;i++){
+    var a=t+i*Math.PI/3-Math.PI/2,x=190+122*Math.cos(a),y=170+128*Math.sin(a);
+    N[i].setAttribute('transform','translate('+(x-52)+','+(y-22)+')');
+    L[i].setAttribute('x2',x);L[i].setAttribute('y2',y);
+  }
+  var p=(ts/2200)%1;ring.setAttribute('r',36+p*30);ring.setAttribute('opacity',1-p);
+}
+function frame(ts){
+  if(run){t+=(ts-last)*0.00022;}
+  last=ts;lay(ts);requestAnimationFrame(frame);
+}
+function setRun(r){run=r;pp.textContent=r?'Pausa':'Riprendi';}
+function select(i){
+  if(sel>=0)N[sel].querySelector('rect').setAttribute('stroke-width','0.5');
+  sel=i;N[i].querySelector('rect').setAttribute('stroke-width','2');
+  setRun(false);
+  var d=D[i];
+  card.innerHTML='<h2>'+esc(d[0])+'</h2><p class="who">'+esc(d[1])+'</p><p class="txt">'+esc(d[2])+'</p>';
+}
+setRun(run);
+pp.addEventListener('click',function(){setRun(!run);});
+N.forEach(function(g,i){
+  g.addEventListener('click',function(){select(i);});
+  g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();select(i);}});
+});
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
